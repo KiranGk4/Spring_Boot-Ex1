@@ -12,13 +12,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * The type Book controller.
+ */
 @Slf4j
 @RestController
 public class BookController {
 
+    /**
+     * The Book service.
+     */
     @Autowired
     BookService bookService;
 
+    /**
+     * Get response entity.
+     *
+     * @return the response entity
+     */
     @GetMapping("/books")
     public ResponseEntity<List<Book>> get()
     {
@@ -33,6 +44,12 @@ public class BookController {
         }
     }
 
+    /**
+     * Get response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
     @GetMapping("/book/{id}")
     public ResponseEntity<Book> get(@PathVariable Integer id)
     {
@@ -48,6 +65,12 @@ public class BookController {
         }
     }
 
+    /**
+     * Add response entity.
+     *
+     * @param book the book
+     * @return the response entity
+     */
     @PostMapping("/book")
     public ResponseEntity<Book> add(@RequestBody Book book)
     {
@@ -58,6 +81,12 @@ public class BookController {
 
     }
 
+    /**
+     * Update book response entity.
+     *
+     * @param book the book
+     * @return the response entity
+     */
     @PutMapping("/bookUpdate")
     public ResponseEntity<Book> updateBook(@RequestBody Book book)
     {
@@ -65,6 +94,11 @@ public class BookController {
         return new ResponseEntity<Book>(updateBook, HttpStatus.OK);
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
     @DeleteMapping("/bookDelete/{id}")
     public void delete(@PathVariable Integer id)
     {

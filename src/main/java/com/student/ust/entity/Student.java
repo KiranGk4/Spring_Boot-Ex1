@@ -8,6 +8,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * The type Student.
+ */
 @Entity
 @Data
 @Table(name = "student_ust_mappedBy")
@@ -20,7 +23,11 @@ public class Student {
     private String name;
     private LocalDateTime createDateTime;
     private LocalDateTime modifiedDateTime;
-    
+
+    @Column(name = "email", unique = true, nullable = false)
+    private String email;
+    @Column(name = "password", nullable = false)
+    private String password;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "student")
     @Column(name = "book_id")
